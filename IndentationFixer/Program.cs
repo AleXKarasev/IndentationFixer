@@ -10,13 +10,13 @@ namespace IndentationFixer
         static void Main(string[] args)
         {
             var settings = ReadSettings();
-
-
             var fileList = GetAllFiles(settings.InputFolder, settings.FilesMask);
 
+            var index = 0;
             foreach (var fileInfo in fileList)
             {
                 FileCleanup.ReadFileLineByLine(fileInfo);
+                Console.WriteLine($"{index++} file from {fileList.Count}. Process {fileInfo.FullName} ...");
             }
         }
 
@@ -38,7 +38,7 @@ namespace IndentationFixer
                 throw new Exception("Input folder does not exist!");
             }
 
-            return dictionary.GetFiles(filesMask);
+            return dictionary.GetFiles(filesMask, SearchOption.AllDirectories);
         }
     }
 }

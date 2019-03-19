@@ -15,7 +15,7 @@ namespace IndentationFixer
                 lineCleanup.CleanEmptyLines();
                 lineCleanup.RemoveEndSpaces();
                 lineCleanup.ReplaceTabToSpaces();
-                fileWasChanged = lineCleanup.IsChanged;
+                fileWasChanged |= lineCleanup.IsChanged;
                 fileLines.Add(lineCleanup.InternalString);
             }
 
